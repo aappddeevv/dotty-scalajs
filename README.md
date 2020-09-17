@@ -17,7 +17,13 @@ sbt ~fastOptJS
 and separately:
 
 ```sh
- npx nodemon -x "node --enable-source-maps" target/scala-0.27/dotty-scalajs-fastopt.js
+npx nodemon -x "node --enable-source-maps" target/scala-0.27/dotty-scalajs-fastopt.js
+```
+
+If you are using the nightly build which uses "the next" version, use:
+
+```sh
+npx nodemon -x "node --enable-source-maps" target/scala-0.28/dotty-scalajs-fastopt.js
 ```
 
 The main initializer is set to true in build.sbt so it will run

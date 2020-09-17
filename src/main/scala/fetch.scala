@@ -12,23 +12,23 @@ trait Response extends js.Object {
     def text(): js.Promise[String] = js.native
 }
 
-// This seems to given an error but should not, error reported
+// This does not compile, yet...
 // @js.native
 // @JSImport("node-fetch", JSImport.Default)
-//def fetch2(url: String, arg: js.Dynamic): js.Promise[Response] = js.native
+// def fetch2(url: String, arg: js.UndefOr[js.Dynamic]=js.undefined): js.Promise[Response] = js.native
 
-// This seems to compile ok, traditional way.
+// Traditional way.
 @js.native
 @JSImport("node-fetch", JSImport.Default)
 object fetch extends js.Any:
-    def apply(url: String, options: js.UndefOr[js.Object|js.Dynamic]=js.undefined): js.Promise[Response] = js.native
+    def apply(url: String, options: js.UndefOr[js.Dynamic]=js.undefined): js.Promise[Response] = js.native
 
 def fetchAndPrint(url: String) =
     fetch(url).toFuture
     .flatMap:
         response =>
             if(!response.ok) Future.failed(new Exception("Not 200"))
-            else response.text().toFuture    
+            else response.text().toFuture
     .recover:
-        case ex => println(s"Fetch error: ${ex}")
-    .foreach(println)
+        case ex => println(s"Fetch error: ${ex}"); "fetch error"
+    .foreach(text => println(text.take(100) + "..."))

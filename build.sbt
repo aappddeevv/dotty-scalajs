@@ -1,4 +1,10 @@
-scalaVersion := "0.27.0-RC1"
+// standard version
+//scalaVersion := "0.27.0-RC1"
+
+// if the current version is 0.27 then this is the nightly build
+// the version is on the dotty website in the header
+scalaVersion := "0.28.0-bin-20200915-5c422e2-NIGHTLY"
+
 enablePlugins(ScalaJSPlugin)
 name := "dotty scalajs"
 scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }

@@ -37,7 +37,7 @@ type MyCombo = Int | Unit
     //var z: MyCombo = 10
     println(s"z (int): $z")
     z = ()
-    println(s"z (undefinde): $z")
+    println(s"z (undefined): $z")
     var z1 = z match
         case i:Int => i+10
         case _ => 1
