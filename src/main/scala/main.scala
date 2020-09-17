@@ -55,5 +55,9 @@ type MyCombo = Int | Unit
     false 8: ${js.DynamicImplicits.truthValue(().asDyn)}
     true 9: ${js.DynamicImplicits.truthValue("blah".asDyn)}
       """")
+    
+    val effect = testSchedule *> testSchedule2
+    zio.Runtime.default.unsafeRunAsync_(effect)
+
     fetchAndPrint("http://google.com")
     println("end")
