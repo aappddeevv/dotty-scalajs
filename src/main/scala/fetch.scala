@@ -7,10 +7,9 @@ import concurrent._
 import concurrent.ExecutionContext.Implicits.global
 
 @js.native
-trait Response extends js.Object {
+trait Response extends js.Object:
     val ok: Boolean = js.native
     def text(): js.Promise[String] = js.native
-}
 
 // This does not compile, yet...
 // @js.native

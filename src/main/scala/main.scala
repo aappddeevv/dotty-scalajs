@@ -16,7 +16,7 @@ def doit(i: Int): Contextual[Int] =
 extension [A](a: A)
     def asDyn = a.asInstanceOf[js.Dynamic]
 
-/** Typesclass */
+/** Typeclass */
 trait HasValue[F[_]]:
     def get[T](x: F[T]): T
 
@@ -33,7 +33,7 @@ type MyCombo = Int | Unit
 @main def app() =
     println("scalajs app")
     var z: Int|Unit = 10
-    // Can't use MyCombo directlly until next dotty release with bug fix
+    // Can't use MyCombo directly until next dotty release with bug fix (0.28)
     //var z: MyCombo = 10
     println(s"z (int): $z")
     z = ()
@@ -42,7 +42,8 @@ type MyCombo = Int | Unit
         case i:Int => i+10
         case _ => 1
     implicit val myint = 10
-    doit(10)
+    val doitValue = doit(10)
+    println(s"doit: $doitValue, should be 20")
     println(s"tryF: ${tryF(List(1,10,11))}")
     println(s"""testing truthiness
     true 1: ${js.DynamicImplicits.truthValue(true.asDyn)}
