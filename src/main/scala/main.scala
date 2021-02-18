@@ -21,7 +21,7 @@ trait HasValue[F[_]]:
     def get[T](x: F[T]): T
 
 /** New typeclass syntax. */
-given HasValue[List]:
+given HasValue[List] with
     def get[T](x: List[T]) = x(0)
      
 /** Summon instance from context bounds. */
@@ -32,9 +32,7 @@ type MyCombo = Int | Unit
 
 @main def app() =
     println("scalajs app")
-    var z: Int|Unit = 10
-    // Can't use MyCombo directly until next dotty release with bug fix (0.28)
-    //var z: MyCombo = 10
+    var z: MyCombo = 10
     println(s"z (int): $z")
     z = ()
     println(s"z (undefined): $z")

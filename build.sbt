@@ -6,7 +6,7 @@ enablePlugins(ScalaJSPlugin)
 name := "dotty scalajs"
 scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
 scalaJSUseMainModuleInitializer := true
-scalacOptions ++= Seq("-language:implicitConversions", "-Yindent-colons", "-Ycheck-init", "-Yexplicit-nulls", "-source", "3.1")
+scalacOptions ++= Seq("-language:implicitConversions", "-Yindent-colons", "-Ycheck-init", "-Yexplicit-nulls")
 libraryDependencies ++= Seq(
     // keep this if you are building for a browser
     //("org.scala-js" %%% "scalajs-dom" % "1.1.0").withDottyCompat(scalaVersion.value)
