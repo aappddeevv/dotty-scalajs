@@ -5,3 +5,9 @@ target
 .metals
 *lock*
 .vscode
+.bsp
+*.sc
+metals.sbt
+project/project
+.scalafmt.conf
+
